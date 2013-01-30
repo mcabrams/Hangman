@@ -37,16 +37,31 @@
 			if (newGuess) {
 
 				guesses.push(guess);
+
+				/*Assume letter is not in word*/
+
+				var inWord = false;
 				
 				for (var j = 0; j < len; j++) {
 					if (guess === word[j]) {
 						revWord = revWord.substring(0, j) + guess + revWord.substring(j + 1, len);
+						inWord = true;
 					}
 				}
 
 				/* Update HTML to reflect new revealed word and new guess*/
 				U.setText('revWord', revWord);
 
+				/* If letter wasn't in word(s), update wrong guesses by adding 1, and reduce guesses remaining by 1 */
+				if (!inWord) {
+					wrongs += 1;
+					remain -= 1;
+					U.setText('wrongs', wrongs);
+					U.setText('remain', remain);
+				}
+
+
+				/* Update letters guessed, and display */
 				var guessesText = "";
 
 				for (var k = 0; k < guesses.length; k++) {
@@ -54,6 +69,13 @@
 				}
 
 				U.setText('guesses', guessesText);
+
+				/* Check to see if game is over, handle accordingly */
+				if (remain === 0) {
+					warnUser('Sorry, game\'s over pal!');
+					U.setText('gameover', ' GAME\'S OVER.');
+					U.$('submit').disabled = true;
+				}
 			}
 			/* Else, guess is repeat, warn user */
 			else {
@@ -109,6 +131,9 @@
 		remain = 6;
 		U.setText('wrongs', wrongs);
 		U.setText('remain', remain);
+
+		/* Set submit to enabled */
+		U.$('submit').disabled = false;
 
 		if (e) {
 			U.preventDef(e);
