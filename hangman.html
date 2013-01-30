@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Hangman</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/hangman.css" />
+    <span class="code-comment"><!--[if IE]></span>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <span class="code-comment"><![endif]--></span>
+</head>
+
+<body id="home">
+
+    <div id="wrapper"><h1>Hangman</h1>
+        <div class="hangman-game">
+            <form action="" id="guessForm">
+                <label for="guess"></label><input type="text" id="guess" name="guess" autofocus>
+                <input id="submit" type="submit" value="Guess!">
+                <button id="newGame">Start new game!</button>
+            </form>
+    
+            <div id="revWord">M_TT_EW AB_A_MS</div>
+            <div class="guesses-made">
+                <p>So far you've guessed:<span id="guesses"></span></p>
+                <p>You've made <span id="wrongs">2</span> wrong guesses and have <span id="remain">5</span> guesses remaining.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utilities.js"></script>
+    <script src="js/hangman.js"></script>
+</body>
+</html>

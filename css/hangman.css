@@ -1,0 +1,23 @@
+body {
+	font-size: 100%;
+}
+
+#wrapper {
+	margin: 10px;
+}
+
+h1, p, form, div {
+	margin-bottom: 10px;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+#guess {
+	width: 2em;
+}
+
+#revWord {
+	letter-spacing: .5em;
+}
