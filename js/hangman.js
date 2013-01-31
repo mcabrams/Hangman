@@ -85,6 +85,9 @@
 			warnUser("Please guess 1 letter");
 		}
 
+		U.$('guess').value = "";
+		U.$('guess').focus();
+
 		if (e) {
 			U.preventDef(e);
 		}
@@ -132,8 +135,16 @@
 		U.setText('wrongs', wrongs);
 		U.setText('remain', remain);
 
+		/* Clear guesses and game over */
+		U.setText('guesses', guesses = []);
+		U.setText('gameover', "");
+
+
 		/* Set submit to enabled */
 		U.$('submit').disabled = false;
+
+		U.$('guess').value = "";
+		U.$('guess').focus();
 
 		if (e) {
 			U.preventDef(e);
